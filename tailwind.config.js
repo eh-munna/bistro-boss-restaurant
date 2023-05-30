@@ -6,6 +6,7 @@ export default {
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
+        cinzel: ['Cinzel', 'sans-serif'],
       },
     },
   },
