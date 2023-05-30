@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Footer = () => {
   return (
     <footer className="text-white font-[inter]">
@@ -23,8 +21,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#111827] text-center py-4 flex flex-col items-center justify-center">
-        <p className="text-lg">
+      <div className=" bg-[#111827] text-center py-4 flex flex-col items-center justify-center">
+        <p className="text-lg px-4">
           Copyright © {new Date().getFullYear()} || All rights reserved Emran
         </p>
       </div>
