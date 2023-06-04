@@ -1,6 +1,18 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
+import useCart from '../../hooks/useCart';
 
 const Navbar = () => {
+  const { user, userLogOut } = useContext(AuthContext);
+  const [cart] = useCart();
+  const navigate = useNavigate();
+  const userSignOut = () => {
+    userLogOut().then(() => {
+      navigate('/');
+    });
+  };
+
   const navOptions = (
     <>
       <li className="uppercase font-[inter] font-medium text-white">
@@ -12,6 +24,26 @@ const Navbar = () => {
       <li className="uppercase font-[inter] font-medium text-white">
         <Link to="/orders/salad">Orders</Link>
       </li>
+      <li className="uppercase font-[inter] font-medium text-white">
+        <Link to="/dashboard/my-cart">Dashboard</Link>
+      </li>
+      <li>
+        <button className="btn content-center">
+          <div className="badge badge-secondary">{cart?.length || 0}</div>
+        </button>
+      </li>
+
+      <>
+        {user ? (
+          <li className="uppercase font-[inter] font-medium text-white">
+            <Link onClick={userSignOut}>Sign Out</Link>
+          </li>
+        ) : (
+          <li className="uppercase font-[inter] font-medium text-white">
+            <Link to="/sign-in">Login</Link>
+          </li>
+        )}
+      </>
     </>
   );
   return (
