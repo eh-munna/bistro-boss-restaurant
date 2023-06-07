@@ -9,6 +9,8 @@ import SignUp from '../pages/SignUp/SignUp';
 import PrivateRoute from '../Routes/PrivateRoute/PrivateRoute';
 import DashboardLayout from '../Layouts/DashboardLayout';
 import MyCart from '../pages/DashBoard/MyCart/MyCart';
+import AllUsers from '../pages/DashBoard/AllUsers/AllUsers';
+import AddItem from '../pages/DashBoard/AddItem/AddItem';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -47,8 +49,16 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: '/dashboard/my-cart',
+        path: 'my-cart',
         element: <MyCart />,
+      },
+      {
+        path: 'all-users',
+        element: <AllUsers />,
+      },
+      {
+        path: 'add-item',
+        element: <AddItem />,
       },
     ],
   },

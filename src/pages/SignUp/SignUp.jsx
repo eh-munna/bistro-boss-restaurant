@@ -5,8 +5,9 @@ import { updateProfile } from 'firebase/auth';
 
 const SignUp = () => {
   const [error, setError] = useState('');
-  const { createUser, userLogOut } = useContext(AuthContext);
-  const navigation = useNavigate();
+  // const { createUser, userLogOut } = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
+  // const navigation = useNavigate();
 
   // creating a new user with email and password
   const userSignUp = (event) => {
@@ -40,8 +41,8 @@ const SignUp = () => {
             .then((data) => {
               if (data.insertedId) {
                 form.reset();
-                userSignOut();
-                navigation('/sign-in');
+                // userSignOut();
+                // navigation('/sign-in');
               }
             });
         })
@@ -68,9 +69,9 @@ const SignUp = () => {
 
     // user logout
 
-    const userSignOut = () => {
-      userLogOut().then(() => {});
-    };
+    // const userSignOut = () => {
+    //   userLogOut().then(() => {});
+    // };
   };
 
   return (

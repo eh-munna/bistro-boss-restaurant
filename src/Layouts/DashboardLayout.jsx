@@ -1,20 +1,47 @@
 import { Link, Outlet } from 'react-router-dom';
+import useAdmin from '../hooks/useAdmin';
 
 const DashboardLayout = () => {
+  // const isAdmin = true;
+  const [isAdmin] = useAdmin();
   const navOptions = (
     <>
-      <li>
-        <Link to="/dashboard/my-cart">User Home</Link>
-      </li>
-      <li>
-        <Link to="/dashboard/reservation">Reservations</Link>
-      </li>
-      <li>
-        <Link to="/dashboard/payment-history">Payment History</Link>
-      </li>
-      <li>
-        <Link to="/dashboard/my-cart">My Cart</Link>
-      </li>
+      {isAdmin ? (
+        <>
+          <li>
+            <Link to="/dashboard/my-cart">Admin Home</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/add-item">Add Item</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/manage-items">Manage Items</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/bookings">Manage Bookings</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/all-users">All Users</Link>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <Link to="/dashboard/my-cart">User Home</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/reservation">Reservations</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/payment-history">Payment History</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/my-cart">My Cart</Link>
+          </li>
+        </>
+      )}
+
+      <div className="divider"></div>
       <li className="uppercase font-[inter] font-medium text-orange-400">
         <Link to="/">Home</Link>
       </li>
